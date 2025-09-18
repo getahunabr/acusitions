@@ -26,3 +26,40 @@
 {"level":"info","message":"User gaberash887@gmail.com created Successfully.","service":"acquisitions-api","timestamp":"2025-09-18T11:28:43.515Z"}
 {"level":"info","message":"User registered successfully:gaberash887@gmail.com","service":"acquisitions-api","timestamp":"2025-09-18T11:28:43.543Z"}
 {"level":"info","message":"::1 - - [18/Sep/2025:11:28:43 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 91 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T11:28:43.550Z"}
+{"level":"error","message":"Error authenticating user: Error: Invalid password","service":"acquisitions-api","timestamp":"2025-09-18T13:20:08.581Z"}
+{"level":"error","message":"signin error Invalid password","service":"acquisitions-api","stack":"Error: Invalid password\n    at authenticateUser (file:///C:/Users/hp/Desktop/acusitions/src/services/Auth.services.js:40:13)\n    at async signin (file:///C:/Users/hp/Desktop/acusitions/src/controller/Auth.controller.js:61:18)","timestamp":"2025-09-18T13:20:08.624Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:20:08 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 32 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:20:08.695Z"}
+{"level":"error","message":"Error authenticating user: Error: Invalid password","service":"acquisitions-api","timestamp":"2025-09-18T13:21:14.059Z"}
+{"level":"error","message":"signin error Invalid password","service":"acquisitions-api","stack":"Error: Invalid password\n    at authenticateUser (file:///C:/Users/hp/Desktop/acusitions/src/services/Auth.services.js:40:13)\n    at async signin (file:///C:/Users/hp/Desktop/acusitions/src/controller/Auth.controller.js:61:18)","timestamp":"2025-09-18T13:21:14.062Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:21:14 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 32 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:21:14.068Z"}
+{"level":"error","message":"Error authenticating user: Error: Invalid password","service":"acquisitions-api","timestamp":"2025-09-18T13:21:45.426Z"}
+{"level":"error","message":"signin error Invalid password","service":"acquisitions-api","stack":"Error: Invalid password\n    at authenticateUser (file:///C:/Users/hp/Desktop/acusitions/src/services/Auth.services.js:40:13)\n    at async signin (file:///C:/Users/hp/Desktop/acusitions/src/controller/Auth.controller.js:61:18)","timestamp":"2025-09-18T13:21:45.427Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:21:45 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 32 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:21:45.428Z"}
+{"level":"error","message":"Error creating the users:Error: user with this email Already exists","service":"acquisitions-api","timestamp":"2025-09-18T13:21:59.602Z"}
+{"level":"error","message":"signup error user with this email Already exists","service":"acquisitions-api","stack":"Error: user with this email Already exists\n    at createUser (file:///C:/Users/hp/Desktop/acusitions/src/services/Auth.services.js:65:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async signup (file:///C:/Users/hp/Desktop/acusitions/src/controller/Auth.controller.js:19:18)","timestamp":"2025-09-18T13:21:59.654Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:21:59 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 409 32 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:21:59.696Z"}
+{"level":"error","message":"Error authenticating user: Error: Invalid password","service":"acquisitions-api","timestamp":"2025-09-18T13:22:34.739Z"}
+{"level":"error","message":"signin error Invalid password","service":"acquisitions-api","stack":"Error: Invalid password\n    at authenticateUser (file:///C:/Users/hp/Desktop/acusitions/src/services/Auth.services.js:40:13)\n    at async signin (file:///C:/Users/hp/Desktop/acusitions/src/controller/Auth.controller.js:61:18)","timestamp":"2025-09-18T13:22:34.741Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:22:34 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 401 32 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:22:34.799Z"}
+{"level":"info","message":"User getulakachew678@gmail.com created Successfully.","service":"acquisitions-api","timestamp":"2025-09-18T13:24:51.433Z"}
+{"level":"info","message":"User registered successfully:getulakachew678@gmail.com","service":"acquisitions-api","timestamp":"2025-09-18T13:24:51.720Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:24:51 +0000] \"POST /api/auth/sign-up HTTP/1.1\" 201 112 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:24:51.722Z"}
+{"level":"info","message":"User getulakachew678@gmail.com authenticated successfully.","service":"acquisitions-api","timestamp":"2025-09-18T13:25:17.034Z"}
+{"level":"info","message":"User signed in successfully: getulakachew678@gmail.com","service":"acquisitions-api","timestamp":"2025-09-18T13:25:17.037Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:25:17 +0000] \"POST /api/auth/sign-in HTTP/1.1\" 200 124 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:25:17.040Z"}
+{"level":"info","message":"User signed out successfully","service":"acquisitions-api","timestamp":"2025-09-18T13:26:33.551Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:13:26:33 +0000] \"POST /api/auth/sign-out HTTP/1.1\" 200 42 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T13:26:33.552Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:03:06 +0000] \"GET /health HTTP/1.1\" 200 73 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:03:06.386Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:40 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:40.486Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:41 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:41.940Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:42 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:42.706Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:43 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:43.554Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:44 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:44.312Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:45 +0000] \"GET /health HTTP/1.1\" 200 75 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:45.350Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:46 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:46.357Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:47 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:47.116Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:52 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:52.994Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:54 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:54.748Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:55 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:55.894Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:56 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:56.926Z"}
+{"level":"info","message":"::1 - - [18/Sep/2025:15:04:58 +0000] \"GET /health HTTP/1.1\" 500 92 \"-\" \"HTTPie\"","service":"acquisitions-api","timestamp":"2025-09-18T15:04:58.852Z"}
