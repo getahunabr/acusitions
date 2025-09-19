@@ -35,7 +35,7 @@ export const authenticateUser = async ({ email, password }) => {
     }
 
     const isPasswordValid = await comparePassword(password, user.password);
-    
+
     if (!isPasswordValid) {
       throw new Error('Invalid password');
     }
@@ -62,7 +62,8 @@ export const createUser = async ({ name, email, password, role = 'user' }) => {
       .where(eq(users.email, email))
       .limit(1);
 
-    if (existingUsers.length > 0) throw new Error('user with this email Already exists');
+    if (existingUsers.length > 0)
+      throw new Error('user with this email Already exists');
     const password_hash = await hashPassword(password);
     const [new_user] = await db
       .insert(users)

@@ -51,7 +51,7 @@ cp .env.development .env.development.local
 # Edit the file with your actual Neon credentials
 # Update the following values:
 # - NEON_API_KEY=your_actual_api_key
-# - NEON_PROJECT_ID=your_project_id  
+# - NEON_PROJECT_ID=your_project_id
 # - PARENT_BRANCH_ID=your_main_branch_id
 ```
 
@@ -254,6 +254,7 @@ docker-compose -f docker-compose.prod.yml exec app npm run db:generate -- --chec
 **Problem**: Cannot connect to Neon Local proxy
 
 **Solution**:
+
 ```bash
 # Check Neon Local container status
 docker-compose -f docker-compose.dev.yml ps neon-local
@@ -270,6 +271,7 @@ docker-compose -f docker-compose.dev.yml exec neon-local env | grep NEON
 **Problem**: Application container fails to start
 
 **Solution**:
+
 ```bash
 # Check application logs
 docker-compose -f docker-compose.dev.yml logs app
@@ -286,6 +288,7 @@ docker-compose -f docker-compose.dev.yml exec neon-local pg_isready -h localhost
 **Problem**: Code changes not reflected in development
 
 **Solution**:
+
 ```bash
 # Ensure volume mounts are correct
 docker-compose -f docker-compose.dev.yml config
@@ -300,6 +303,7 @@ docker-compose -f docker-compose.dev.yml up --build -d
 **Problem**: Cannot connect to Neon Cloud in production
 
 **Solution**:
+
 ```bash
 # Verify environment variables
 docker-compose -f docker-compose.prod.yml exec app env | grep DATABASE_URL
@@ -363,14 +367,14 @@ docker-compose -f docker-compose.prod.yml logs -f --timestamps
 
 ### Key Differences
 
-| Feature | Development | Production |
-|---------|-------------|------------|
-| Database | Neon Local (Ephemeral branches) | Neon Cloud (Production DB) |
-| Hot Reloading | ✅ Enabled | ❌ Disabled |
-| Logging | Debug level | Info level |
-| Security | Relaxed | Hardened |
-| Resource Limits | None | CPU/Memory limits |
-| Health Checks | Basic | Comprehensive |
+| Feature         | Development                     | Production                 |
+| --------------- | ------------------------------- | -------------------------- |
+| Database        | Neon Local (Ephemeral branches) | Neon Cloud (Production DB) |
+| Hot Reloading   | ✅ Enabled                      | ❌ Disabled                |
+| Logging         | Debug level                     | Info level                 |
+| Security        | Relaxed                         | Hardened                   |
+| Resource Limits | None                            | CPU/Memory limits          |
+| Health Checks   | Basic                           | Comprehensive              |
 
 ---
 

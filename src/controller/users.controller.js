@@ -1,16 +1,26 @@
 import logger from '#config/logger.js';
-import { getAllUsers, getUserById, updateUser, deleteUser } from '#services/users.services.js';
+import {
+  getAllUsers,
+  getUserById,
+  updateUser,
+  deleteUser,
+} from '#services/users.services.js';
 import { formatValidationError } from '#utils/format.js';
-import { userIdSchema, updateUserSchema } from '#validations/users.validation.js';
+import {
+  userIdSchema,
+  updateUserSchema,
+} from '#validations/users.validation.js';
 
 export const fetchAllUsers = async (req, res, next) => {
   try {
     logger.info('Getting all users...', {
-      requestedBy: req.user ? `${req.user.email} (${req.user.role})` : 'Anonymous',
+      requestedBy: req.user
+        ? `${req.user.email} (${req.user.role})`
+        : 'Anonymous',
     });
-    
+
     const allUsers = await getAllUsers();
-    
+
     res.json({
       message: 'Successfully retrieved all users.',
       users: allUsers,
@@ -26,7 +36,7 @@ export const fetchUserById = async (req, res, next) => {
   try {
     // Validate the user ID parameter
     const validationResult = userIdSchema.safeParse(req.params);
-    
+
     if (!validationResult.success) {
       return res.status(400).json({
         error: 'Validation failed',
@@ -37,7 +47,9 @@ export const fetchUserById = async (req, res, next) => {
     const { id } = validationResult.data;
 
     logger.info(`Getting user by ID: ${id}`, {
-      requestedBy: req.user ? `${req.user.email} (${req.user.role})` : 'Anonymous',
+      requestedBy: req.user
+        ? `${req.user.email} (${req.user.role})`
+        : 'Anonymous',
     });
 
     const user = await getUserById(id);
@@ -48,14 +60,14 @@ export const fetchUserById = async (req, res, next) => {
     });
   } catch (error) {
     logger.error('Error fetching user by ID:', error);
-    
+
     if (error.message === 'User not found') {
       return res.status(404).json({
         error: 'User not found',
         message: 'The requested user does not exist.',
       });
     }
-    
+
     next(error);
   }
 };
@@ -64,7 +76,7 @@ export const updateUserById = async (req, res, next) => {
   try {
     // Validate the user ID parameter
     const idValidationResult = userIdSchema.safeParse(req.params);
-    
+
     if (!idValidationResult.success) {
       return res.status(400).json({
         error: 'Validation failed',
@@ -74,7 +86,7 @@ export const updateUserById = async (req, res, next) => {
 
     // Validate the update data
     const bodyValidationResult = updateUserSchema.safeParse(req.body);
-    
+
     if (!bodyValidationResult.success) {
       return res.status(400).json({
         error: 'Validation failed',
@@ -98,7 +110,7 @@ export const updateUserById = async (req, res, next) => {
         targetUserId: id,
         currentUserId,
       });
-      
+
       return res.status(403).json({
         error: 'Forbidden',
         message: 'You can only update your own profile.',
@@ -112,7 +124,7 @@ export const updateUserById = async (req, res, next) => {
         targetUserId: id,
         currentUserRole,
       });
-      
+
       return res.status(403).json({
         error: 'Forbidden',
         message: 'Only administrators can change user roles.',
@@ -132,14 +144,14 @@ export const updateUserById = async (req, res, next) => {
     });
   } catch (error) {
     logger.error('Error updating user:', error);
-    
+
     if (error.message === 'User not found') {
       return res.status(404).json({
         error: 'User not found',
         message: 'The user you are trying to update does not exist.',
       });
     }
-    
+
     next(error);
   }
 };
@@ -148,7 +160,7 @@ export const deleteUserById = async (req, res, next) => {
   try {
     // Validate the user ID parameter
     const validationResult = userIdSchema.safeParse(req.params);
-    
+
     if (!validationResult.success) {
       return res.status(400).json({
         error: 'Validation failed',
@@ -171,7 +183,7 @@ export const deleteUserById = async (req, res, next) => {
         targetUserId: id,
         currentUserId,
       });
-      
+
       return res.status(403).json({
         error: 'Forbidden',
         message: 'You can only delete your own account.',
@@ -192,14 +204,14 @@ export const deleteUserById = async (req, res, next) => {
     });
   } catch (error) {
     logger.error('Error deleting user:', error);
-    
+
     if (error.message === 'User not found') {
       return res.status(404).json({
         error: 'User not found',
         message: 'The user you are trying to delete does not exist.',
       });
     }
-    
+
     next(error);
   }
 };

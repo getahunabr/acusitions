@@ -9,7 +9,7 @@ services:
       target: production
     container_name: acusitions-app-prod
     ports:
-      - "3000:3000"
+      - '3000:3000'
     env_file:
       - .env.production
     environment:
@@ -18,7 +18,7 @@ services:
       # or from .env.production file
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"]
+      test: ['CMD-SHELL', 'curl -f http://localhost:3000/health || exit 1']
       interval: 30s
       timeout: 10s
       retries: 3
@@ -43,10 +43,10 @@ services:
       - /usr/src/app/logs:noexec,nosuid,size=50m
     # Logging configuration
     logging:
-      driver: "json-file"
+      driver: 'json-file'
       options:
-        max-size: "10m"
-        max-file: "3"
+        max-size: '10m'
+        max-file: '3'
 
   # Optional: Add a reverse proxy for production (nginx, traefik, etc.)
   # nginx:
@@ -67,7 +67,6 @@ services:
 networks:
   acusitions-network:
     driver: bridge
-
 # Optional: For production monitoring and logging
 # volumes:
 #   prometheus_data:

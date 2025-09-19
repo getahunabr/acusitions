@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -34,14 +34,14 @@ jobs:
           npm test
           TEST_EXIT_CODE=$?
           set -e
-          
+
           if [ $TEST_EXIT_CODE -ne 0 ]; then
             echo "::error::Tests failed. Please check the test output above for details."
             echo "test_status=failed" >> $GITHUB_OUTPUT
           else
             echo "test_status=passed" >> $GITHUB_OUTPUT
           fi
-          
+
           exit $TEST_EXIT_CODE
 
       - name: Upload coverage reports
@@ -59,7 +59,7 @@ jobs:
         if: always()
         run: |
           echo "## Test Results 🧪" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ steps.test.outputs.test_status }}" = "passed" ]; then
             echo "✅ **All tests passed successfully!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -75,7 +75,7 @@ jobs:
             echo "- Verify database connections and test data" >> $GITHUB_STEP_SUMMARY
             echo "- Review recent code changes that might affect tests" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Environment" >> $GITHUB_STEP_SUMMARY
           echo "- Node.js: 20.x" >> $GITHUB_STEP_SUMMARY

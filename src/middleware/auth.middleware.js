@@ -4,7 +4,8 @@ import { jwttoken } from '#utils/jwt.js';
 // Middleware to authenticate users using JWT token
 export const authenticateToken = async (req, res, next) => {
   try {
-    const token = req.cookies?.token || req.headers.authorization?.replace('Bearer ', '');
+    const token =
+      req.cookies?.token || req.headers.authorization?.replace('Bearer ', '');
 
     if (!token) {
       logger.warn('Authentication failed: No token provided', {
@@ -12,7 +13,7 @@ export const authenticateToken = async (req, res, next) => {
         userAgent: req.get('user-agent'),
         path: req.path,
       });
-      
+
       return res.status(401).json({
         error: 'Unauthorized',
         message: 'Access token is required',
@@ -21,13 +22,13 @@ export const authenticateToken = async (req, res, next) => {
 
     const decoded = jwttoken.verify(token);
     req.user = decoded;
-    
+
     logger.debug('User authenticated successfully', {
       userId: decoded.id,
       email: decoded.email,
       role: decoded.role,
     });
-    
+
     next();
   } catch (error) {
     logger.warn('Authentication failed: Invalid token', {
@@ -36,7 +37,7 @@ export const authenticateToken = async (req, res, next) => {
       userAgent: req.get('user-agent'),
       path: req.path,
     });
-    
+
     return res.status(401).json({
       error: 'Unauthorized',
       message: 'Invalid or expired token',
@@ -62,7 +63,7 @@ export const authorizeRoles = (...roles) => {
         requiredRoles: roles,
         path: req.path,
       });
-      
+
       return res.status(403).json({
         error: 'Forbidden',
         message: 'Insufficient permissions to access this resource',
@@ -74,7 +75,7 @@ export const authorizeRoles = (...roles) => {
       role: req.user.role,
       path: req.path,
     });
-    
+
     next();
   };
 };
@@ -95,13 +96,16 @@ export const authorizeOwnerOrAdmin = (req, res, next) => {
   const isOwner = resourceUserId === currentUserId;
 
   if (!isOwner && !isAdmin) {
-    logger.warn('Authorization failed: User can only access their own resources', {
-      userId: currentUserId,
-      resourceUserId,
-      userRole: req.user.role,
-      path: req.path,
-    });
-    
+    logger.warn(
+      'Authorization failed: User can only access their own resources',
+      {
+        userId: currentUserId,
+        resourceUserId,
+        userRole: req.user.role,
+        path: req.path,
+      }
+    );
+
     return res.status(403).json({
       error: 'Forbidden',
       message: 'You can only access your own resources',
@@ -115,6 +119,6 @@ export const authorizeOwnerOrAdmin = (req, res, next) => {
     isOwner,
     isAdmin,
   });
-  
+
   next();
 };

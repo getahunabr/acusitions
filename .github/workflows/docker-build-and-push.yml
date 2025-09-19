@@ -7,12 +7,12 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: acusitions
+  IMAGE_NAME: kubernates-demo-api
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -64,7 +64,7 @@ jobs:
         run: |
           echo "## Docker Build and Push Results 🐳" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ steps.build.outcome }}" = "success" ]; then
             echo "✅ **Docker image built and pushed successfully!**" >> $GITHUB_STEP_SUMMARY
             echo "" >> $GITHUB_STEP_SUMMARY
@@ -96,7 +96,7 @@ jobs:
             echo "- Check Docker Hub credentials in repository secrets" >> $GITHUB_STEP_SUMMARY
             echo "- Ensure base images are accessible" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Build Information" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit:** \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
