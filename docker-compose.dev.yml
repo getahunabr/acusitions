@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Neon Local proxy service for development
+  neon-local:
+    image: neondatabase/neon_local:latest
+    container_name: acusitions-neon-local
+    ports:
+      - '5432:5432'
+    env_file:
+      - .env.development
+
+    volumes:
+      # Optional: Persist branch metadata for Git integration
+      - ./.neon_local/:/tmp/.neon_local
+      - ./.git/HEAD:/tmp/.git/HEAD:ro
+    networks:
+      - acusitions-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h localhost -p 5432']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: acusitions-app-dev
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env.development
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgres://neon:npg@neon-local:5432/neondb?sslmode=require
+    volumes:
+      # Mount source code for hot reloading in development
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      neon-local:
+        condition: service_healthy
+    networks:
+      - acusitions-network
+    restart: unless-stopped
+
+networks:
+  acusitions-network:
+    driver: bridge
+
+volumes:
+  neon_local_data:
